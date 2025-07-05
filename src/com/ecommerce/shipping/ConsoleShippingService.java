@@ -17,12 +17,9 @@ public class ConsoleShippingService implements ShippingService {
                 int quantity = entry.getValue();
                 double weight = entry.getKey().getWeight();
                 totalWeight += weight * quantity;
-
-                
                 System.out.printf("%dx %-20s %6.0fg%n", 
                 quantity, name, weight * 1000);
             }
-            
             System.out.printf("Total package weight %.1fkg%n%n", totalWeight);
     }
    
