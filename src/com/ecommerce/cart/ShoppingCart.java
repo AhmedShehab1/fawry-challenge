@@ -95,7 +95,9 @@ public class ShoppingCart {
     
         items.forEach((product, quantity) -> {
             if (product instanceof Shippable shippable) {
-                shippableItems.put(shippable, quantity);
+                if (shippable.getWeight() > 0) {
+                    shippableItems.put(shippable, quantity);
+                }
             }
         });
         
