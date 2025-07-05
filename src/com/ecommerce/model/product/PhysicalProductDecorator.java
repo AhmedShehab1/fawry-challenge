@@ -2,7 +2,7 @@ package com.ecommerce.model.product;
 
 import java.util.Objects;
 
-public class PhysicalProductDecorator implements Shippable {
+public class PhysicalProductDecorator implements Product, Shippable {
     private final double weight;
     private final Product product;
 
@@ -23,12 +23,15 @@ public class PhysicalProductDecorator implements Shippable {
     public String getName() {
         return product.getName();
     }
+
     public double getPrice() {
         return product.getPrice();
     }
+
     public int getQuantity() {
         return product.getQuantity();
     }
+    
     public void setQuantity(int quantity) {
         product.setQuantity(quantity);
     }

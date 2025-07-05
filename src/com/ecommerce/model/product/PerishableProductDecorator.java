@@ -2,7 +2,7 @@ package com.ecommerce.model.product;
 
 import java.time.LocalDate;
 
-class PerishableProductDecorator implements Expirable {
+public class PerishableProductDecorator implements Product, Expirable {
     private final Product product;
     private final LocalDate expiryDate;
 
