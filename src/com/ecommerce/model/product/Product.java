@@ -1,4 +1,4 @@
-package models;
+package com.ecommerce.model.product;
 
 import java.util.Objects;
 /**
@@ -68,7 +68,7 @@ public abstract class Product {
      * Displays information about the product.
      * This method should be implemented by subclasses to provide specific details.
      */
-    public abstract void displayInfo();
+    // public abstract void displayInfo();
 
     /**
      * Returns a string representation of the product.
