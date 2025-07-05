@@ -14,32 +14,38 @@ import com.ecommerce.shipping.ShippingService;
 
 class Main {
     public static void main(String[] args) {
-        // Setup services
-        ShippingService shippingService = new ConsoleShippingService();
-        
-        ShoppingCart cart = new ShoppingCart(shippingService);
-        
+ 
         // Create products
-        Product tv = new PhysicalProductDecorator(
-            new BasicProduct("TV", 899.99, 5), 25.0
-        );
-        
         Product cheese = new PerishableProductDecorator(
             new PhysicalProductDecorator(
-                new BasicProduct("Cheese", 8.99, 20),
-                0.5
+                new BasicProduct("Cheese", 100, 10),
+                0.4
             ),
-            LocalDate.now().plusDays(14)
+            LocalDate.now().plusDays(10)
         );
+
+        Product biscuits = new PerishableProductDecorator(
+            new PhysicalProductDecorator(
+                new BasicProduct("biscuits", 150, 5),
+                0.7
+            ),
+            LocalDate.now().plusDays(20)
+        );
+
+        Product scratchCard = new BasicProduct("Scratch Card", 50, 100);
+        
+        // Create services
+        ShippingService shippingService = new ConsoleShippingService();
+        ShoppingCart cart = new ShoppingCart(shippingService);
         
         // Create customer
-        Customer customer = new Customer("Alice", 1000.00, cart);
+        Customer customer = new Customer("John", 500, cart);
         
-        // Add items to cart
-        cart.addItem(tv, 1);
-        cart.addItem(cheese, 3);
+        // Add items
+        cart.addItem(cheese, 2);
+        cart.addItem(biscuits, 1);
+        cart.addItem(scratchCard, 1);
         
-        // Checkout
         try {
             customer.checkout();
         } catch (ECommerceException e) {
