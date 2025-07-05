@@ -17,15 +17,4 @@ public class BasicProduct extends Product {
             throw new IllegalArgumentException("Description cannot be empty");
         }
     }
-
-    @Override
-    public boolean requiresShipping() {
-        return false; // Basic products do not require shipping
-    }
-
-    @Override
-    public boolean isExpired() {
-        return false; // Basic products are not perishable
-    }
-    
 }

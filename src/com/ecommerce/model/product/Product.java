@@ -102,17 +102,4 @@ public abstract class Product {
     public int hashCode() {
         return Objects.hash(name, price, quantity);
     }
-
-    /**
-     * Abstract method to check if the product is expired.
-     * This method should be implemented by subclasses that have expiration logic.
-     * @return true if the product is expired, false otherwise.
-     */
-    public abstract boolean isExpired();
-    /**
-     * Abstract method to check if the product requires shipping.
-     * This method should be implemented by subclasses that have specific shipping requirements.
-     * @return true if the product requires shipping, false otherwise.
-     */
-    public abstract boolean requiresShipping();
 }

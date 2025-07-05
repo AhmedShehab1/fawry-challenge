@@ -1,10 +1,14 @@
 package com.ecommerce.model.product;
 
-public class PhysicalProductDecorator extends Product implements Shippable {
-    private final double weight;
+import java.util.Objects;
 
-    public  PhysicalProductDecorator(String name, double price, int quantity, double weight) {
-        super(name, price, quantity);
+public class PhysicalProductDecorator implements Shippable {
+    private final double weight;
+    private final Product product;
+
+    public PhysicalProductDecorator(Product product, double weight) {
+        this.product = Objects.requireNonNull(product, "Product cannot be null");
+        
         if (weight < 0) {
             throw new IllegalArgumentException("Weight cannot be negative");
         }
@@ -16,13 +20,16 @@ public class PhysicalProductDecorator extends Product implements Shippable {
         return weight;
     }
 
-    @Override
-    public boolean requiresShipping() {
-        return true; // Physical products require shipping
+    public String getName() {
+        return product.getName();
     }
-
-    @Override
-    public boolean isExpired() {
-        return false; // Physical products are not perishable
+    public double getPrice() {
+        return product.getPrice();
+    }
+    public int getQuantity() {
+        return product.getQuantity();
+    }
+    public void setQuantity(int quantity) {
+        product.setQuantity(quantity);
     }
 }
